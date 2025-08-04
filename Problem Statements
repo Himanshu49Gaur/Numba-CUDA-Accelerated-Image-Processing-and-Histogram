@@ -1,0 +1,52 @@
+Problem 1 
+ImageBlur kernel
+o Using the Mod9-Lab.ipynb, in the section labeled Problem 1 ImageBlur, rewrite the image blur kernel using Numba cuda.
+o Take the original C CUDA kernel’s parameters (input array, output array, image dimensions) and map them to a Python function decorated with @cuda.jit.
+o Eliminate explicit width/height arguments by reading the input array’s shape inside the kernel.
+o Compute C’s blockIdx/threadIdx arithmetic with Numba’s to obtain each thread’s 2D coordinates. Compute the stride so that each thread can loop over multiple pixels if the grid is smaller than the image.
+o Within each thread’s pixel loop, implement a nested loop over the 9×9 neighborhood offsets (–4 through +4).
+o Perform boundary checks to ensure you only accumulate valid pixel values, then compute the integer average and assign it to the output array.
+o Choose a two-dimensional block size (e.g., 16 × 16 threads) and compute grid dimensions by dividing the image dimensions by the block dimensions (rounding up).
+o Launch the Numba-CUDA kernel with these grid and block parameters.
+o Copy the blurred image back from the GPU to the host.
+o Validate correctness by comparing against a known-good CPU implementation or by visual inspection of the smoothed output.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Problem 2
+ImageBlur kernel
+o Using the Mod9-Lab.ipynb, in the section labeled Problem 2 ImageBlur Helper, rewrite the image blur kernel using Numba cuda
+o Take the original C CUDA kernel’s parameters (input array, output array, image dimensions) and map them to a Python function decorated with @cuda.jit.
+o Eliminate explicit width/height arguments by reading the input array’s shape inside the kernel.
+o Replace C’s blockIdx/threadIdx arithmetic with Numba’s cuda.grid(2) to obtain each thread’s 2D coordinates.
+o Use cuda.gridsize(2) to compute the stride so that each thread can loop over multiple pixels if the grid is smaller than the image.
+o Within each thread’s pixel loop, implement a nested loop over the 9×9 neighborhood offsets (–4 through +4).
+o Perform boundary checks to ensure you only accumulate valid pixel values, then compute the integer average and assign it to the output array.
+o Refactor the kernel to use shared‐memory tiling: load each tile plus its border into fast shared memory before averaging.
+o Choose a two-dimensional block size (e.g., 16 × 16 threads) and compute grid dimensions by dividing the image dimensions by the block dimensions (rounding up).
+o Launch the Numba-CUDA kernel with these grid and block parameters.
+o Copy the blurred image back from the GPU to the host.
+o Validate correctness by comparing against a known-good CPU implementation or by visual inspection of the smoothed output.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Problem 3
+Histogram kernel
+o Using the Mod9-Lab.ipynb, in the section labeled Problem 3 Histogram, rewrite the histogram kernel using Numba cuda.
+o Translate the original CUDA C kernel’s signature (input data array, output histogram array, data length) into a Python function decorated with @cuda.jit.
+o Drop explicit size arguments where possible by querying array attributes inside the kernel.
+o Replace the C-style linear index calculation with Numba’s cuda.grid(1) to assign each thread a starting position.
+o Use cuda.gridsize(1) to compute a stride so that each thread can process multiple elements if the grid launch doesn’t cover the entire data.
+o Allocate a per-block shared-memory array inside the kernel to accumulate local bin counts.
+o Initialize the shared buffer to zero at the start of each block, and synchronize threads before proceeding to data accumulation.
+o In each thread’s strided loop over the input data, use atomic adds to increment the corresponding bin in the shared buffer.
+o Ensure that only values within the valid bin range are counted.
+o After all threads in a block finish local accumulation, synchronize them, then have each thread add its shared-memory bin counts into the global histogram using atomic operations.
+o Synchronize once more if needed to guarantee completion.
+o Allocate your input data and an empty histogram array as NumPy arrays on the host.
+o Transfer these arrays to the GPU: the data for processing and a zero-initialized global histogram buffer.
+o Choose an appropriate 1D block size (e.g., 256 threads) and compute the number of blocks by dividing the data length by the block size, rounding up.
+o Launch the kernel with these grid and block dimensions.
+o Copy the final global histogram array back from the GPU to the host.
+o Validate correctness by comparing against a pure-Python or NumPy‐based histogram, and report any discrepancies.
+
