@@ -1,0 +1,53 @@
+Problem 1
+GPU Execution Time: 0.3511 seconds
+CPU Execution Time: 2.3072 seconds
+Comparison of GPU and CPU results: True
+GPU speedup factor: 6.57x
+Approximate FLOPS for GPU: 8139852
+Approximate FLOPS for CPU: 8139852
+GPU Performance: 0.02 GFLOPS
+CPU Performance: 0.00 GFLOPS
+GPU Memory Usage: 3459.67 MB
+CPU Memory Usage: 0.05 MB
+GPU Bandwidth: 9852.54 MB/s
+CPU Bandwidth: 0.02 MB/s
+
+------------------------------------------------------------------------
+
+Problem 2
+Image Size : 50246 pixels
+GPU Execution Time: 0.7597 seconds
+CPU Execution Time: 2.2650 seconds
+Outputs match: False
+GPU speedup factor: 2.98x
+Approximate FLOPS for GPU: 25725952
+Approximate FLOPS for CPU: 25725952
+GPU Performance: 0.03 GFLOPS
+CPU Performance: 0.01 GFLOPS
+GPU Memory Usage: 3459.67 MB
+CPU Memory Usage: 0.05 MB
+GPU Throughput: 66141.25 pixels/second
+CPU Throughput: 22183.51 pixels/second
+GPU Processing Time per Pixel: 0.0000151192 seconds
+CPU Processing Time per Pixel: 0.0000450785 seconds
+
+----------------------------------------------------------------------------
+
+Problem 3
+
+ Evaluation Results
+Image Size          : 50246 pixels
+GPU Execution Time   : 0.281276 seconds
+CPU Execution Time   : 0.282211 seconds
+Outputs Match        : Yes
+GPU Speedup Factor   : 1.00x
+GPU Throughput       : 178636.09 operations/sec
+CPU Throughput       : 178044.35 operations/sec
+GPU FLOPS            : 357272.18 FLOPS
+CPU FLOPS            : 356088.69 FLOPS
+GPU Memory Bandwidth : 0.000182 GB/s
+CPU Memory Bandwidth : 0.000182 GB/s
+GPU Memory Usage     : 3459.67 MB
+CPU Memory Usage     : 0.05 MB
+GPU Processing Time per Pixel: 0.0000055980 seconds
+CPU Processing Time per Pixel: 0.0000056166 seconds
