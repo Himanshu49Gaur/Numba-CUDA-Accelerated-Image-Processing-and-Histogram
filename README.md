@@ -79,3 +79,6 @@ By comparing GPU and CPU execution times, you can analyze the specific condition
 
 ### Problem-Solving and Debugging:
 The project provides a basis for debugging and validating the results of parallel kernels. The comparison with CPU implementations allows you to identify and troubleshoot subtle discrepancies or errors that can arise in parallel code.
+
+### Disclaimer
+This project is for educational and academic purposes only. The user is solely responsible for the use of this code and any outcomes that may result from its implementation.
