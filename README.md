@@ -1,22 +1,22 @@
-### Project Description
+# Project Description
 
 This project focuses on translating and optimizing compute-intensive algorithms—specifically, an image blur and a histogram calculation—from CPU to GPU using Python and Numba's CUDA toolkit. The objective is to demonstrate how to write GPU kernels in Python, configure parallel computation, and implement techniques like shared-memory tiling and atomic operations to maximize performance. The project includes performance benchmarking to analyze the speedups gained by using Numba-CUDA.
 
 ### Key Features
 
-# Image Blur Kernel:
+### Image Blur Kernel:
 Implements a 9x9 average image blur using a @cuda.jit decorated Python function. The kernel is designed to handle each pixel with a dedicated thread, and it can also compute a stride for when the grid is smaller than the image dimensions.
 
-# Shared-Memory Tiling Optimization:
+### Shared-Memory Tiling Optimization:
 Features an enhanced image blur kernel that utilizes fast shared memory to load tiles and their borders before averaging. This technique is used to minimize global memory bottlenecks and maximize throughput.
 
-# Histogram Kernel:
+### Histogram Kernel:
 A GPU-accelerated histogram kernel that efficiently counts bin values using a per-block shared-memory array and atomic additions. This design ensures thread safety and accurate accumulation of counts from multiple threads processing the data.
 
-# Performance Benchmarking:
+### Performance Benchmarking:
 The project includes code to benchmark the execution times of the GPU-accelerated kernels against a known-good CPU implementation. This allows for a direct comparison of performance gains.
 
-# Correctness Validation:
+### Correctness Validation:
 The outputs of the kernels are validated against CPU implementations, with the histogram kernel specifically compared against a pure-Python or NumPy-based histogram.
 
 ``Installation & Usage``
@@ -64,12 +64,6 @@ The histogram kernel demonstrates a common parallel pattern involving per-block 
 ### Benchmarking and Performance Analysis:
 By comparing GPU and CPU execution times, you can analyze the specific conditions under which GPU acceleration provides significant speedups. This includes understanding the overhead of data transfer and how it influences the overall performance of the application.
 
-... [Existing README content] ...
-
-### How This Project Helps and What You Can Analyze
-
-... [Existing content for this section] ...
-
 ### Demos
 * **Image Blur:** [Insert an image showing before and after blur]
 * **Performance Chart:** [Insert a chart showing CPU vs. GPU performance]
@@ -83,4 +77,5 @@ By comparing GPU and CPU execution times, you can analyze the specific condition
 * Implement additional image filters (e.g., Gaussian, edge detection) using Numba-CUDA to further explore its capabilities.
 * Integrate a command-line interface for running the kernels without the need for a Jupyter Notebook.
 
-Problem-Solving and Debugging: The project provides a basis for debugging and validating the results of parallel kernels. The comparison with CPU implementations allows you to identify and troubleshoot subtle discrepancies or errors that can arise in parallel code.
+### Problem-Solving and Debugging:
+The project provides a basis for debugging and validating the results of parallel kernels. The comparison with CPU implementations allows you to identify and troubleshoot subtle discrepancies or errors that can arise in parallel code.
